@@ -386,7 +386,7 @@ do kint = 1, n_points
        end do
        NN=0.d0
        do n_count =1,n_nodes
-             NN(1:2)=NN(1:2)+dNdx(n_count,2)*(dof_total(2*n_count-1:2*n_count))
+             NN(1:2)=NN(1:2)+dNdx(n_count,2)*(dof_total(2*n_count-1:2*n_count)+dof_increment(2*n_count-1:2*n_count))
        end do
        do i_count = 1,2
          do j_count = 1,2
