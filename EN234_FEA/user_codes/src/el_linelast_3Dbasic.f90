@@ -114,7 +114,13 @@ subroutine el_linelast_3dbasic(lmn, element_identifier, n_nodes, node_property_l
         end do
         volume=volume+w(kint)*determinant
     end do
-        dNbardx(1:n_nodes,1:3)=dNbardx(1:n_nodes,1:3)/volume
+!    do i=1,n_nodes
+!       do j=1,3
+!        dNbardx(i,j)=dNbardx(i,j)/volume
+!        end do
+!     end do
+     dNbardx=dNbardx/volume
+    ! dNbardx=dNbardx(1:n_nodes,1:3)/volume
     !write(*,*) volume
     do kint = 1, n_points
         call calculate_shapefunctions(xi(1:3,kint),n_nodes,N,dNdxi)
@@ -397,8 +403,11 @@ subroutine fieldvars_linelast_3dbasic(lmn, element_identifier, n_nodes, node_pro
         end do
         volume=volume+w(kint)*determinant
     end do
-        dNbardx(1:n_nodes,1:3)=dNbardx(1:n_nodes,1:3)/volume
-
+       do i=1,n_nodes
+          do j=1,3
+        dNbardx(i,j)=dNbardx(i,j)/volume
+       end do
+       end do
     do kint = 1, n_points
         call calculate_shapefunctions(xi(1:3,kint),n_nodes,N,dNdxi)
         dxdxi = matmul(x(1:3,1:n_nodes),dNdxi(1:n_nodes,1:3))
