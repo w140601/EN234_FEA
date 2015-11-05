@@ -7,11 +7,11 @@ program en234fea
   implicit none
 
 !  Demo codes - basic 3D linear elasticity
-!
-  infil = './input_files/Hypo_elastic_3d.in'
-  open (unit = IOR, file = infil, status = 'old', ERR=500)
-  outfil = './Output_files/Hypo_elastic_3d.out'
-  open (UNIT = IOW, FILE = outfil, STATUS = 'unknown', ERR=500)
+
+!  infil = './input_files/Hypo_elastic_3d.in'
+!  open (unit = IOR, file = infil, status = 'old', ERR=500)
+!  outfil = './Output_files/Hypo_elastic_3d.out'
+!  open (UNIT = IOW, FILE = outfil, STATUS = 'unknown', ERR=500)
 
 !  infil = './input_files/Holeplate_3d.in'
 !  open (unit = IOR, file = infil, status = 'old', ERR=500)
@@ -82,10 +82,10 @@ program en234fea
 !  open (UNIT = IOW, FILE = outfil, STATUS = 'unknown', ERR=500)
 !!
 !!  Homework 7, stretch and rotate a hyperelastic bar
-!  infil = './input_files/Hyperelastic_stretch_rotate.in'
-!  open (unit = IOR, file = infil, status = 'old', ERR=500)
-!  outfil = './Output_files/hyperelastic_stretch_rotate.out'
-!  open (UNIT = IOW, FILE = outfil, STATUS = 'unknown', ERR=500)
+  infil = './input_files/Hyperelastic_stretch_rotate.in'
+  open (unit = IOR, file = infil, status = 'old', ERR=500)
+  outfil = './Output_files/hyperelastic_stretch_rotate.out'
+  open (UNIT = IOW, FILE = outfil, STATUS = 'unknown', ERR=500)
 !
 ! Homework 7, stretch a hyperelastic plate with a central hole
 !  infil = './input_files/Holeplate_hyperelastic.in'
