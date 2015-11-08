@@ -116,7 +116,7 @@ subroutine el_hyperelast_3dbasic(lmn, element_identifier, n_nodes, node_property
                 end do
             end do
         end do
-        write (*,*) 'f(1,1)=',f(1,1)
+
 ! calculate inverse F and J
         call invert_small(F,finv,detf)
 
@@ -173,7 +173,7 @@ subroutine el_hyperelast_3dbasic(lmn, element_identifier, n_nodes, node_property
         BBinv(4)=BBmatrixinv(1,2)
         BBinv(5)=BBmatrixinv(1,3)
         BBinv(6)=BBmatrixinv(2,3)
-write (*,*) 'bbinv = ' , BBmatrixinv(1,1)
+
 !
         strain = matmul(B,dof_total)
         dstrain = matmul(B,dof_increment)
@@ -193,11 +193,7 @@ write (*,*) 'bbinv = ' , BBmatrixinv(1,1)
 
         D=nv/(detf**(2.d0/3.d0))*matrix1+nv/(3.d0*detf**(2.d0/3.d0))*((BB(1)+BB(2)+BB(3))/3.d0*II_dyadic_BBinv&
            -II_dyadic_II-BB_dyadic_BBinv)+bulk*detf*(detf-0.5d0)*II_dyadic_BBinv
-write (*,*) 'detf',detf
-write(*,*)'BB: ', BB(1)
-write(*,*)'II_dya_bbinv: ', II_dyadic_BBinv
-write(*,*)'II_dyadic_II: ', II_dyadic_II
-write(*,*)'BB_dyadic_BBinv: ', BB_dyadic_BBinv
+
         !stress = matmul(D,strain+dstrain)
 !write(*,*)bbmatrix
 !write(*,*)0000000000000000000000
@@ -212,7 +208,7 @@ write(*,*)'BB_dyadic_BBinv: ', BB_dyadic_BBinv
         G(6,1:9)=[0.d0,2.d0*BBmatrix(2,3),2.d0*BBmatrix(2,3),0.d0,2.d0*BBmatrix(1,3),0.d0,2.d0*BBmatrix(1,2),&
             2.d0*BBmatrix(3,3),2.d0*BBmatrix(2,2)]
 
-write(*,*)g(6,9)
+
            !stressmatrix=0.d0
             do i=1,3
                 do j=1,3
@@ -243,8 +239,7 @@ write(*,*)g(6,9)
                   Bstar(7,3:3*n_nodes:3)   = dNdy(1:n_nodes,1)
                   Bstar(8,2:3*n_nodes-1:3) = dNdy(1:n_nodes,3)
                   Bstar(9,3:3*n_nodes:3)   = dNdy(1:n_nodes,2)
-write(*,*) 'bstar= ',Bstar(1,1)
-write(*,*) 'stressmatrix=',stressmatrix
+
                   S = reshape(matmul(transpose(B),stress),(/3,length_dof_array/3/))
                   do i = 1,n_nodes
                    Pvec = reshape(spread(transpose(dNdy(i:i,1:3)),dim=2,ncopies=n_nodes),(/3*n_nodes/))
